@@ -129,7 +129,7 @@ curl --location 'https://web3.binance.com/bapi/defi/v1/public/wallet-direct/secu
 | 0-1 | LOW | Proceed with caution | Lower risk detected, but NOT guaranteed safe. DYOR. |
 | 2-3 | MEDIUM | Exercise caution | Moderate risks detected, review risk items carefully |
 | 4 | HIGH | Avoid trading | Critical risks detected, high probability of loss |
-| 5 | BLOCKED | Block transaction | Severe risks confirmed, do NOT proceed |
+| 5 | HIGH | Block transaction | Severe risks confirmed, do NOT proceed |
 
 **IMPORTANT**: LOW risk does NOT mean "safe." Audit results are point-in-time snapshots. Project teams can modify contracts or restrict liquidity after purchase. These risks cannot be predicted in advance.
 

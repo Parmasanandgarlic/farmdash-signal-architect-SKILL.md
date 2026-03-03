@@ -35,7 +35,7 @@ https://web3.binance.com/bapi/defi/v3/public/wallet-direct/buw/wallet/address/pn
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | address | string | Yes | Wallet address, e.g., `0x0000000000000000000000000000000000000001` |
-| chainId | string | Yes | Chain ID, e.g., `56` (BSC), `1` (ETH), `8453` (Base) |
+| chainId | string | Yes | Chain ID, e.g., `56` (BSC), `8453` (Base) |
 | offset | number | No | Pagination offset, default 0 |
 
 **Request Headers**:
@@ -101,7 +101,6 @@ curl --location 'https://web3.binance.com/bapi/defi/v3/public/wallet-direct/buw/
 | Chain Name | chainId |
 |------------|---------|
 | BSC | 56 |
-| Ethereum | 1 |
 | Base | 8453 |
 | Solana | CT_501 |
 
