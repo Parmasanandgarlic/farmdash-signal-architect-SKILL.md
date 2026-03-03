@@ -2,8 +2,8 @@
 name: spot
 description: Binance Spot request using the Binance API. Authentication requires API key and secret key. Supports testnet and mainnet.
 metadata:
-  - version: 1.0.0
-  - author: Binance
+  version: 1.0.0
+  author: Binance
 license: MIT
 ---
 

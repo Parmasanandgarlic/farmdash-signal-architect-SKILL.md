@@ -37,8 +37,8 @@ To add a new skill:
    title: <Skill Name>
    description: A clear description of what the skill does and when to use it.
    metadata:
-     - version: <Skill Version>
-     - author: <Your Github Username>
+     version: <Skill Version>
+     author: <Your Github Username>
    license: MIT
    ---
 
