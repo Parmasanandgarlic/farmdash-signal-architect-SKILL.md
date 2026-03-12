@@ -10,7 +10,9 @@ All trading endpoints require HMAC SHA256 signed requests.
 | Testnet | https://testnet.binance.vision |
 
 ## Required Headers
-X-MBX-APIKEY: your_api_key
+
+* `X-MBX-APIKEY`: your_api_key
+* `User-Agent`: binance-spot/1.0.2 (Skill)
 
 ## Signing Process
 
@@ -21,7 +23,23 @@ Include all parameters plus `timestamp` (current Unix time in milliseconds):
 
 **Optional:** Add `recvWindow` (default 5000ms) for timestamp tolerance.
 
-### Step 2: Generate Signature
+### Step 2: Percent‑Encode Parameters
+
+Before generating the signature, **percent‑encode all parameter names and values using UTF‑8 encoding according to RFC 3986.**
+Unreserved characters that must not be encoded: `A-Z a-z 0-9 - _ . ~`
+
+- Chinese characters example:
+`symbol=这是测试币456`
+
+Percent‑encoded:
+`symbol=%E8%BF%99%E6%98%AF%E6%B5%8B%E8%AF%95%E5%B8%81456`
+
+**Important:**
+The exact encoded query string must be used for both signing and the HTTP request.
+
+### Step 3: Generate Signature
+
+Generate the signature from the encoded query string.
 
 #### HMAC SHA256 signature
 
@@ -54,14 +72,14 @@ echo -n "symbol=BTCUSDT&side=BUY&type=MARKET&quantity=0.001&timestamp=1234567890
   openssl dgst -sha256 -sign private_key.pem | base64
 ```
 
-### Step 3: Append Signature
+### Step 4: Append Signature
 
 Add signature parameter to the query string:
 `symbol=BTCUSDT&side=BUY&type=MARKET&quantity=0.001&timestamp=1234567890123&signature=abc123...`
 
-### Step 4: Add Product User Agent Header
+### Step 5: Add Product User Agent Header
 
-Include `User-Agent` header with the following string: `binance-spot/1.0.1 (Skill)`
+Include `User-Agent` header with the following string: `binance-spot/1.0.2 (Skill)`
 
 #### Complete Example
 
@@ -69,7 +87,7 @@ Request:
 ```bash
 curl -X POST "https://api.binance.com/api/v3/order" \
   -H "X-MBX-APIKEY: your_api_key" \
-  -H "User-Agent: binance-spot/1.0.1 (Skill)" \
+  -H "User-Agent: binance-spot/1.0.2 (Skill)" \
   -d "symbol=BTCUSDT&side=BUY&type=MARKET&quantity=0.001&timestamp=1234567890123&signature=..."
 ```
 
@@ -91,7 +109,7 @@ SIGNATURE=$(echo -n "$QUERY" | openssl dgst -sha256 -hmac "$SECRET_KEY" | cut -d
 # Make request
 curl -X POST "${BASE_URL}/api/v3/order?${QUERY}&signature=${SIGNATURE}" \
   -H "X-MBX-APIKEY: ${API_KEY}"\
-  -H "User-Agent: binance-spot/1.0.1 (Skill)"
+  -H "User-Agent: binance-spot/1.0.2 (Skill)"
 ```
 
 If you get -1021 Timestamp outside recvWindow:
