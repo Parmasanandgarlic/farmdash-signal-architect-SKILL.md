@@ -1,7 +1,7 @@
 # Binance Authentication
 
 All trading endpoints require either HMAC SHA256, RSA, or Ed25519 signed requests.
-**Always detect the key typebefore signing**, do not assume HMAC.
+**Always detect the key type before signing**, do not assume HMAC.
 
 ## Base URLs
 
