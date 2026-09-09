@@ -181,6 +181,8 @@ baw approvals revoke --binanceChainId <binanceChainId> --tokenContract <tokenCon
 | `--spender`        | Yes      | —       | Spender contract address               |
 | `--type`           | Yes      | —       | Approval type: `approve` or `permit2`  |
 
+Revoke always runs at the `MEDIUM` gas level; there is no gas parameter to set.
+
 ### Example
 
 ```bash

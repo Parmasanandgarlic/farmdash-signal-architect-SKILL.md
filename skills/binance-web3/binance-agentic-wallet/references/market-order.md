@@ -30,12 +30,12 @@ baw market-order swap --fromTokenQty <fromTokenQty> --fromToken <fromToken> --to
 | `--binanceChainId` | Yes      | —       | Binance chain ID: `56` (BSC), `CT_501` (Solana). For a full list, see `wallet chains` |
 | `--slippage`       | No       | `auto`  | Slippage tolerance: "auto" or 0–100 (e.g., "2.5" = 2.5%)                              |
 | `--mev`            | No       | `true`  | MEV protection: "true" or "false"                                                     |
-| `--gasLevel`       | No       | `HIGH`  | Gas level: "LOW", "MEDIUM", or "HIGH"                                                 |
+| `--gasLevel`       | No       | `MEDIUM`  | Gas level: "LOW", "MEDIUM", or "HIGH"                                                 |
 
 ### Example
 
 ```bash
-# Swap 0.1 BNB to USDT (defaults: slippage auto, mev on, gas level HIGH)
+# Swap 0.1 BNB to USDT (defaults: slippage auto, mev on, gas level MEDIUM)
 baw market-order swap --fromTokenQty 0.1 --fromToken 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE --toToken 0x55d398326f99059fF775485246999027B3197955 --binanceChainId 56 --json
 
 # Swap 100 USDT to BNB with custom settings
