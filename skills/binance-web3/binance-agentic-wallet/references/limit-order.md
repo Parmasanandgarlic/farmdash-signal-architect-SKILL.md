@@ -31,7 +31,7 @@ baw limit-order buy --triggerPrice <triggerPrice> --fromTokenQty <fromTokenQty> 
 | `--binanceChainId` | Yes      | —       | Binance chain ID: `56` (BSC), `CT_501` (Solana). For a full list, see `wallet chains` |
 | `--slippage`       | No       | `auto`  | Slippage tolerance: "auto" or 0–100 (e.g., "2.5" = 2.5%)                              |
 | `--mev`            | No       | `true`  | MEV protection: "true" or "false"                                                     |
-| `--gasLevel`       | No       | `HIGH`  | Gas level: "LOW", "MEDIUM", or "HIGH"                                                 |
+| `--gasLevel`       | No       | `MEDIUM`  | Gas level: "LOW", "MEDIUM", or "HIGH"                                                 |
 
 ### Example
 
@@ -72,7 +72,7 @@ baw limit-order sell --triggerPrice <triggerPrice> --fromTokenQty <fromTokenQty>
 | `--binanceChainId` | Yes      | —       | Binance chain ID: `56` (BSC), `CT_501` (Solana). For a full list, see `wallet chains` |
 | `--slippage`       | No       | `auto`  | Slippage tolerance: "auto" or 0–100 (e.g., "2.5" = 2.5%)                              |
 | `--mev`            | No       | `true`  | MEV protection: "true" or "false"                                                     |
-| `--gasLevel`       | No       | `HIGH`  | Gas level: "LOW", "MEDIUM", or "HIGH"                                                 |
+| `--gasLevel`       | No       | `MEDIUM`  | Gas level: "LOW", "MEDIUM", or "HIGH"                                                 |
 
 ### Example
 

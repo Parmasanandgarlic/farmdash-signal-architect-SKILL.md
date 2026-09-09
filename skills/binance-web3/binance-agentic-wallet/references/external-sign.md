@@ -47,8 +47,30 @@ baw contract-call preview --binanceChainId CT_501 --from <from> --unsignedTx <ba
 | `--value` | EVM no | `0` | Raw `eth_sendTransaction` value in wei, not human-readable. Must be a non-negative integer (decimal or `0x`-hex); decimals are rejected. |
 | `--inputData` | EVM no | `0x` | EVM calldata. |
 | `--unsignedTx` | Solana yes | - | Solana unsigned transaction, base64 encoded. |
+| `--gasLimit` | EVM no | - | Custom EVM gas limit, an integer from 21000 to 15000000. Omit it and the backend estimates. See below. |
 
-Do not pass gas settings. `contract-call` does not accept gas limit, gas price, or gas option parameters. Preview simulates directly and execute uses backend gas estimation.
+Do not pass gas price or gas option parameters — `contract-call` does not accept them. By default,
+leave gas alone entirely: preview simulates the call and the backend estimates the gas limit.
+
+#### `--gasLimit` (advanced fallback)
+
+`--gasLimit` is the one exception, and it is a fallback rather than part of the normal flow. Do not
+decide to use it yourself — pass it only when the user explicitly asks for a specific gas limit.
+Otherwise omit it and let the backend estimate.
+
+How it behaves:
+
+- **It is a cap, not a bypass.** The transaction is still simulated, with your value as the
+  ceiling. If it passes, that exact value goes on chain — no buffer is added.
+- **Too low fails at preview.** If the call needs more gas than the cap, preview fails with
+  `351805` instead of letting the transaction run out of gas after broadcast. `351805` is the
+  generic simulation-failure code, so read the message before acting: when it points at gas ("The
+  transaction ran out of gas. Please increase the gas limit and try again."), the user's value was
+  too low — tell them, and let them pick a higher one.
+- **Preview only.** Pass it on `preview`; `execute` takes just the `requestId` and reuses the value
+  from that preview. There is nothing to pass twice.
+- **EVM only.** Passing it on Solana is rejected with `351821`, as is any value outside
+  21000–15000000.
 
 ### Example
 

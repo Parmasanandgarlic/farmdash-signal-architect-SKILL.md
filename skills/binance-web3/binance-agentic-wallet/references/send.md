@@ -19,7 +19,7 @@ baw wallet send [--amount <amount>] [--max] --recipient <recipient> --binanceCha
 | `--recipient`      | Yes         | —       | Recipient wallet address (must be in the [address book](#address-book)), ENS is not supported                                                       |
 | `--binanceChainId` | Yes         | —       | Binance chain ID: `56` (BSC), `CT_501` (Solana). For a full list, see `wallet chains`                                                               |
 | `--tokenAddress`   | Yes         | —       | Token contract address                                                                                                                              |
-| `--gasLevel`       | No          | `HIGH`  | Gas level: "LOW", "MEDIUM", or "HIGH"                                                                                                               |
+| `--gasLevel`       | No          | `MEDIUM`  | Gas level: "LOW", "MEDIUM", or "HIGH"                                                                                                               |
 
 ### Example
 

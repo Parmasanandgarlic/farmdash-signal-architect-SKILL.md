@@ -11,11 +11,12 @@ description: |
   claim rewards/fees, health factor, APY, TVL,
   sign external transaction, contract call, sign message, EIP-712, developer mode,
   speed up/cancel/replace transaction, pending/stuck transactions,
+  gas price, gas fee, network fee, fee levels, gas tiers,
   or any on-chain wallet operation.
 metadata:
   author: binance-web3-team
-  version: '1.11.0'
-  requiredCliVersion: '1.9.0'
+  version: '1.12.0'
+  requiredCliVersion: '1.10.0'
   openclaw:
     requires:
       bins:
@@ -40,6 +41,7 @@ This skill drives the `baw` CLI to manage a Binance Web3 wallet — sign-in/sign
 | Sign out / disconnect wallet                                         | `auth signout`                        | [authentication.md](references/authentication.md) |
 | Check if wallet is connected                                         | `wallet status`                       | [wallet-view.md](references/wallet-view.md)       |
 | List supported chains / available networks                           | `wallet chains`                       | [wallet-view.md](references/wallet-view.md)       |
+| Query gas price / fee levels / network fee                           | `wallet gas-price`                    | [gas.md](references/gas.md)                       |
 | Get my wallet address                                                | `wallet address`                      | [wallet-view.md](references/wallet-view.md)       |
 | Check token balances                                                 | `wallet balance`                      | [wallet-view.md](references/wallet-view.md)       |
 | View transaction history                                             | `wallet tx-history`                   | [wallet-view.md](references/wallet-view.md)       |
