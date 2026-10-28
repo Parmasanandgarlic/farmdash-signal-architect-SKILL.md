@@ -46,7 +46,7 @@ Risk analysis is neither transaction authority nor broadcast/settlement evidence
 
 ## Bounded-delegation policy review
 
-**USER_SIGNED = operational; BOUNDED_AUTONOMOUS_AGENT_LOCAL_SIGNER = preparation_only.** Camp Guard can review proposed delegation bounds but does not register authority, activate automation, or attest that an autonomous route is production-qualified. Do not present these local reviewer checks as fields or guarantees automatically enforced by the API.
+**USER_SIGNED is the default; BOUNDED_AUTONOMOUS requires separate scoped owner authorization.** Live domain status reports bounded local execution under owner-signed policies. Camp Guard remains read-only: it can review bounds but does not register authority, activate automation or attest to execution readiness. Do not present these local reviewer checks as fields or guarantees automatically enforced by the API.
 
 Compare a proposed action with the independently captured, explicitly signed policy and verify:
 
@@ -56,7 +56,7 @@ Compare a proposed action with the independently captured, explicitly signed pol
 - Slippage and gas ceilings, fresh quote/simulation validity, and permitted action type.
 - Validity/expiry, cooldowns, registered local signer, and current revocation status with documented revocation instructions.
 
-Missing, expired, revoked, unregistered, or exceeded bounds produce a local `halt`. A signature or paid API entitlement alone grants no broader authority. User/agent signing and broadcast remain exclusively inside the independently authorized local wallet/runtime boundary; FarmDash never receives user or agent private keys. Policy review never promotes the current preparation-only architecture to live execution.
+Missing, expired, revoked, unregistered, or exceeded bounds produce a local `halt`. A signature or paid API entitlement alone grants no broader authority. User/agent signing and broadcast remain exclusively inside the independently authorized local wallet/runtime boundary; FarmDash never receives user or agent private keys. A policy verdict cannot activate an execution mode; current deployment gates and the separately authorized domain workflow still govern execution.
 
 ## Optional Binance Agentic Wallet evidence
 
@@ -81,3 +81,5 @@ Continue to a separate wallet/execution skill only when all relevant verdicts ar
 - Security boundaries: https://www.farmdash.one/security
 
 Adapted from canonical FarmDash main `3b6a83dd5bfa239c85b68797bd27651294f335ab` for neutral security-only distribution. No asset recommendation, affiliate/referral promotion, or safety guarantee is implied.
+
+Capability wording reverified on 2026-10-28 against current live status and canonical main `45196127e861f55fa3fb0e295dc4580a6bdfe4ad`; original adaptation provenance above is retained.
