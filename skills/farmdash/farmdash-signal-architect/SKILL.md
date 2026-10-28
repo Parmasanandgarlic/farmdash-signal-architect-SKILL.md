@@ -16,7 +16,7 @@ A third-party skill for DeFi swap estimates, firm quotes, simulation, transactio
 ## Execution truth and authority
 
 - **USER_SIGNED = operational.** The user reviews and authorizes the exact transaction; signing and broadcast stay in the user's wallet/client. A compatible locally controlled wallet/agent can perform the local signing step under the user's explicit authority; no particular wallet brand is required.
-- **BOUNDED_AUTONOMOUS_AGENT_LOCAL_SIGNER = preparation_only.** Bounded autonomy is an optional architecture, not a production-qualified execution route. Do not start unattended execution or infer readiness from tool discovery, session creation, API access, or a delegation record.
+- **BOUNDED_AUTONOMOUS requires separate scoped owner authorization.** Current live domain status reports bounded local execution under owner-signed policies; this submission remains a USER_SIGNED workflow and must not activate unattended execution. Tool discovery, session creation, API access, or a delegation record alone is not execution authority.
 - FarmDash is zero-custody for this compatibility-swap flow: it prepares transaction data, verifies authorization, and records settlement evidence. It never receives, stores, logs, or signs with user or agent private keys and does not broadcast compatibility swaps.
 - Commercial authentication/access is separate from transaction authority. API keys, subscription access, credits, or payment buy API capacity, never permission to sign or spend. Session authentication is not wallet authority.
 - Never ask for, accept, store, or transmit private keys, seed phrases, wallet exports, or Binance credentials. Keep signing secrets exclusively in the user's wallet or explicitly configured local agent signer.
@@ -39,9 +39,9 @@ Before sending wallet or transaction context, disclose that FarmDash can receive
 8. Independently compare the final unsigned transaction with the expected target, chain, value, recipient, and calldata. The user's wallet/client then signs the blockchain transaction locally and broadcasts it. FarmDash does neither. Reject mismatches or missing evidence before signing.
 9. After wallet broadcast, use `confirm_swap` with the authenticated owning `sessionId`, `agentAddress`, `sessionToken`, prepared swap's `feeEventId`, and wallet-produced `txHash`. Session credentials authenticate the record, not signing authority. Only canonical receipt/finality and exact expected fee-transfer verification establish durable settlement. Do not invent a transaction hash or report submission as success.
 
-## Optional bounded-delegation architecture (preparation only)
+## Separately authorized bounded execution (outside this skill)
 
-Explain, but do not activate, an agent-local-signer design only when asked. A signed delegation would need allowed chain IDs, protocol/router and asset allowlists, per-transaction value limits, session/remaining budgets, approval/allowance limits, slippage and gas ceilings, validity/expiry, cooldowns, revocation, and an explicitly registered signer. Every action would still require fresh authoritative simulation and policy enforcement. Keys stay local; registration or a signed policy alone does not promote the current `preparation_only` route to operational. Missing bounds mean halt, not assumed consent.
+Explain the boundary only when asked. Current FarmDash status reports operational bounded local execution for supported domains under separately owner-signed, revocable policies. That is a separate workflow, not an automatic extension of this USER_SIGNED manual. Do not activate it here. An authorized domain workflow must verify allowed chains, protocol/router and asset allowlists, per-transaction and cumulative/session budgets, gas/slippage ceilings, exact simulation/calldata binding, expiry and revocation. Missing bounds mean halt, not consent. ERC-4337 server submission, generic server-intent execution and MEE are not operational execution paths; ACP remains deployment-gated.
 
 ## Failure and settlement discipline
 
@@ -59,4 +59,4 @@ Explain, but do not activate, an agent-local-signer design only when asked. A si
 - Integration documentation: https://www.farmdash.one/docs
 - Security boundaries: https://www.farmdash.one/security
 
-This is transaction-preparation guidance, not investment advice, a recommendation, a liquidity guarantee, or assurance that an asset or route is safe. Adapted from canonical FarmDash main `3b6a83dd5bfa239c85b68797bd27651294f335ab` for Binance's neutral contribution format; the execution readiness above intentionally preserves the user's current operational/preparation-only boundary.
+This is transaction-preparation guidance, not investment advice, a recommendation, a liquidity guarantee, or assurance that an asset or route is safe. Adapted from canonical FarmDash main `3b6a83dd5bfa239c85b68797bd27651294f335ab` for Binance's neutral contribution format; the original adaptation commit is historical provenance. Capability wording was reverified on 2026-10-28 against current live status and canonical main `45196127e861f55fa3fb0e295dc4580a6bdfe4ad`, without expanding this skill beyond USER_SIGNED execution.
